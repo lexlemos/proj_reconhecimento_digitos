@@ -6,27 +6,23 @@ from sklearn.tree import DecisionTreeClassifier, plot_tree
 from sklearn.metrics import accuracy_score, classification_report
 
 def executar_treinamento():
-    # --- [PASSO 1: CARREGAMENTO E PREPARAÇÃO] ---
-    # Carregamos o dataset onde cada imagem 8x8 é um vetor de 64 pixels.
+    #  [PASSO 1: CARREGAMENTO E PREPARAÇÃO]
     dados = load_digits()
     X = dados.data 
     y = dados.target 
-
-    # Dividimos os dados: 80% para aprender (treino) e 20% para testar (avaliação).
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     print(f"Dataset carregado: {X_train.shape[0]} amostras de treino.")
 
-    # --- [PASSO 2: O ALGORITMO (MAPEADO AO PSEUDOCÓDIGO)] ---
+    # [PASSO 2: O ALGORITMO (MAPEADO AO PSEUDOCÓDIGO)]
     # O pseudocódigo CART/ID3 inicia aqui. 
-    # Definimos o critério de 'entropy' (Entropia) para medir o Ganho de Informação.
     
     # [PSEUDOCÓDIGO]: Criar_No_Decisao(Dados)
     # [PSEUDOCÓDIGO]: Se ganho_informacao < limiar, torna-se Nó Folha.
     modelo = DecisionTreeClassifier(
         criterion='entropy', 
-        max_depth=10,        # Limita a altura da árvore (Critério de Parada)
-        min_samples_leaf=5,  # Mínimo de amostras por nó (Evita Overfitting)
+        max_depth=10,       
+        min_samples_leaf=5, 
         random_state=42
     )
 
