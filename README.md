@@ -52,5 +52,4 @@ streamlit run app.py
 
 O modelo utiliza o critério de **Entropia** para calcular o Ganho de Informação em cada nó. A interface permite visualizar o "Mapa de Atenção", numerando os pixels que a árvore utilizou para chegar ao veredito final.
 
-```
 
