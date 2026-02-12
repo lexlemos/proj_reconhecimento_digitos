@@ -6,7 +6,6 @@ from sklearn.datasets import load_digits
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 
-# Configuração da Página
 st.set_page_config(page_title="IA - Analise de Decisao (Ensemble)", layout="wide")
 
 st.title("Diagnóstico de Decisão da IA (Random Forest)")
@@ -15,11 +14,9 @@ st.markdown("---")
 @st.cache_resource
 def treinar_modelo():
     digits = load_digits()
-    # Usamos stratify para manter a consistência das classes
     X_train, X_test, y_train, y_test = train_test_split(
         digits.data, digits.target, test_size=0.2, random_state=42, stratify=digits.target
     )
-    # Implementação do Random Forest (O "V8" das árvores)
     modelo = RandomForestClassifier(n_estimators=100, criterion='entropy', random_state=42)
     modelo.fit(X_train, y_train)
     return modelo, digits, X_test, y_test
@@ -31,8 +28,6 @@ idx_exemplo = st.sidebar.slider("Escolha uma imagem de teste:", 0, len(X_test)-1
 
 col1, col2 = st.columns([1, 1.3])
 
-# Selecionamos a primeira árvore da floresta para a explicação visual (XAI)
-# Isso resolve o erro 'RandomForestClassifier object has no attribute tree_'
 arvore_exemplo = modelo.estimators_[0]
 
 with col1:
@@ -40,7 +35,6 @@ with col1:
     fig, ax = plt.subplots(figsize=(5, 5))
     ax.imshow(X_test[idx_exemplo].reshape(8, 8), cmap='gray_r', interpolation='nearest')
 
-    # Pegamos o caminho de decisão percorrido nesta árvore específica
     indicador = arvore_exemplo.decision_path([X_test[idx_exemplo]])
     nos_percorridos = indicador.indices
     
@@ -48,7 +42,6 @@ with col1:
     contador = 1
     
     for no in nos_percorridos:
-        # Verifica se o nó não é uma folha (-2 indica que ainda há uma decisão por pixel)
         if arvore_exemplo.tree_.feature[no] != -2:
             pixel = arvore_exemplo.tree_.feature[no]
             valor = X_test[idx_exemplo][pixel]
@@ -56,7 +49,6 @@ with col1:
             
             row, col = divmod(pixel, 8)
 
-            # Desenha o quadrado vermelho no pixel analisado
             ax.add_patch(plt.Rectangle((col-0.5, row-0.5), 1, 1, fill=False, color='red', lw=2))
             ax.text(col, row, str(contador), color='white', fontsize=12, 
                     fontweight='bold', ha='center', va='center', 
