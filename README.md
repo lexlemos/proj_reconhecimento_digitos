@@ -69,4 +69,7 @@ O modelo evoluiu de uma árvore simples para uma floresta otimizada, atingindo o
 
 * Random Forest (100 árvores): 97.50% de acurácia.
 
+## Hugging Face do projeto
+
+https://huggingface.co/spaces/lexlemos/letter_recognition
 
