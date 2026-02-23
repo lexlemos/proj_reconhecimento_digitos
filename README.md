@@ -4,7 +4,7 @@ Este repositório contém uma aplicação de Inteligência Artificial para class
 
 ##  Equipe
 * **Nome Completo 1** - Allex Lemos de Souza Pinheiro
-* **Nome Completo 2** - XXX
+* **Nome Completo 2** - Mateus da Silva Barreto
 * **Nome Completo 3** - XXX
 
 ##  Tecnologias e Bibliotecas
@@ -41,10 +41,17 @@ pip install -r requirements.txt
 
 ```
 
-### 4. Rodar a Aplicação
+### 4. Rodar a Aplicação Web
 
 ```bash
 streamlit run app.py
+
+```
+
+### 4.1 Rodar o CLI de Avaliação de Precisão
+
+```bash
+streamlit run treinamento.py
 
 ```
 
