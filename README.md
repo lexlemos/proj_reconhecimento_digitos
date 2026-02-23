@@ -5,7 +5,7 @@ Este repositório contém uma aplicação de Inteligência Artificial para class
 ##  Equipe
 * **Nome Completo 1** - Allex Lemos de Souza Pinheiro
 * **Nome Completo 2** - Mateus da Silva Barreto
-* **Nome Completo 3** - XXX
+* **Nome Completo 3** - Vitor Araújo Andrade
 
 ##  Tecnologias e Bibliotecas
 * **Linguagem:** Python 3.10+
