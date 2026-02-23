@@ -51,7 +51,7 @@ streamlit run app.py
 ### 4.1 Rodar o CLI de Avaliação de Precisão
 
 ```bash
-streamlit run treinamento.py
+python treinamento.py
 
 ```
 
